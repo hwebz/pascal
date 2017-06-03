@@ -1,0 +1,49 @@
+program ExceptionHandling;
+
+{$mode objfpc}{$H+}
+
+uses {$IFDEF UNIX} {$IFDEF UseCThreads}
+  cthreads, {$ENDIF} {$ENDIF}
+  Classes,
+  SysUtils { you can add units after this };
+
+{var
+  x, y: integer;
+  Res: double;
+begin
+  try
+    Write('Input x: ');
+    Readln(x);
+    Write('Input y: ');
+    Readln(y);
+    Res := x / y;
+    Writeln('x / y = ', Res);
+  except
+    on e: Exception do
+    begin
+      Writeln('An error occurred: ', e.message);
+    end;
+  end;
+  Write('Press enter key to close');
+  Readln;
+end.}
+
+var
+  x, y: integer;
+  Res: double;
+begin
+  try
+    Write('Input x: ');
+    Readln(x);
+    Write('Input y: ');
+    Readln(y);
+    Res := x / y;
+    Writeln('x / y = ', Res);
+  finally
+    Write('Press enter key to close');
+    Readln;
+  end;
+end.
+
+
+

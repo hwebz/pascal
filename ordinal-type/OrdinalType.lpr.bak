@@ -1,0 +1,47 @@
+program OrdinalType;
+
+{$mode objfpc}{$H+}
+
+uses
+  {$IFDEF UNIX}{$IFDEF UseCThreads}
+  cthreads,
+  {$ENDIF}{$ENDIF}
+  Classes
+  { you can add units after this };
+
+type
+    TLanguageType = (ltArabic, ltEnglish);
+var
+  Lang: TLanguageType;
+  AName: string;
+  Selection: Byte;
+begin
+  Write('Please select Language: 1 (Arabic), 2 (English)');
+  Readln(Selection);
+  if Selection = 1 then
+     Lang:= ltArabic
+  else
+  if selection = 2 then
+  Lang:= ltEnglish
+  else
+      Writeln('Wrong entry');
+  if Lang = ltArabic then
+     Write(' (' :ماهو اسك:
+  else
+      if Lang = ltEnglish then
+         Write('What is your name: ');
+  Readln(AName);
+  if Lang = ltArabic then
+    begin
+      Writeln(' مرحبا بك: ', AName);
+      Write(' ;('الرجاء الضغط على مفتاح إدخال لغللق  البناامج
+    end
+  else
+  if Lang = ltEnglish then
+    begin
+    Writeln('Hello ', AName);
+    Write('Please press enter key to close');
+    end;
+  Readln;
+end.
+

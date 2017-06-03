@@ -1,0 +1,3 @@
+Some content in other.txt at first line
+At second line
+At third line

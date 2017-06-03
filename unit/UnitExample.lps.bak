@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="3">
+      <Unit0>
+        <Filename Value="UnitExample.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <CursorPos X="19" Y="8"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="test.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Test"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="30" Y="18"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="hejriutils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="HejriUtils"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="18"/>
+        <CursorPos X="26" Y="27"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit2>
+    </Units>
+    <JumpHistory Count="2" HistoryIndex="1">
+      <Position1>
+        <Filename Value="UnitExample.lpr"/>
+        <Caret Line="8" Column="14"/>
+      </Position1>
+      <Position2>
+        <Filename Value="hejriutils.pas"/>
+        <Caret Line="23" Column="22" TopLine="64"/>
+      </Position2>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

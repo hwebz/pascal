@@ -1,0 +1,124 @@
+program FileCopyingExample;
+
+{$mode objfpc}{$H+}
+
+uses {$IFDEF UNIX} {$IFDEF UseCThreads}
+  cthreads, {$ENDIF} {$ENDIF}
+  Classes,
+  SysUtils { you can add units after this };
+
+{ Depend on your file size that program will choose the best algorithm to copy like: file of Byte, file of Word, ...
+  if you want to copy a file of any kind using a faster method, you should use 'untyped' files.
+ Output:
+        Input source file name: /home/motaz/quran/mishari/32.mp3
+        Input destination file name: /home/motaz/Alsajda.mp3
+
+        Input source file name: c:\photos\mypphoto.jpg
+        Input destination file name: c:\temp\copy.jpg
+
+        Input source file name: test.pas
+        Input destination file name: testcopy.pas
+}
+{
+var
+  SourceName, DestName: string;
+  SourceF, DestF: file of byte;
+  Block: byte;
+begin
+  Writeln('Files copy');
+  Write('Input source file name: ');
+  Readln(SourceName);
+  Write('Input destination file name: ');
+  Readln(DestName);
+  if FileExists(SourceName) then
+  begin
+    AssignFile(SourceF, SourceName);
+    AssignFile(DestF, DestName);
+    FileMode := 0; // open for read only
+    Reset(SourceF); // open source file
+    Rewrite(DestF); // Create destination file
+    // Start copy
+    Writeln('Copying..');
+    while not EOF(SourceF) do
+    begin
+      Read(SourceF, Block); // Read Byte from source file
+      Write(DestF, Block); // Write this byte into new
+      // destination file
+    end;
+    CloseFile(SourceF);
+    CloseFile(DestF);
+  end
+  else // Source File not found
+    Writeln('Source File does not exist');
+  Write('Copy file is finished, press enter key to close..');
+  Readln;
+end. }
+
+// Copy files using untyped files program
+{var
+  SourceName, DestName: string;
+  SourceF, DestF: file;
+  Block: array [0 .. 1023] of byte;
+  NumRead: integer;
+begin
+  Writeln('Files copy');
+  Write('Input source file name: ');
+  Readln(SourceName);
+  Write('Input destination file name: ');
+  Readln(DestName);
+  if FileExists(SourceName) then
+  begin
+    AssignFile(SourceF, SourceName);
+    AssignFile(DestF, DestName);
+    FileMode := 0; // open for read only
+    Reset(SourceF, 1); // open source file
+    Rewrite(DestF, 1); // Create destination file
+    // Start copy
+    Writeln('Copying..');
+    while not EOF(SourceF) do
+    begin
+      // Read Byte from source file
+      BlockRead(SourceF, Block, SizeOf(Block), NumRead);
+      // Write this byte into new destination file
+      BlockWrite(DestF, Block, NumRead);
+    end;
+    CloseFile(SourceF);
+    CloseFile(DestF);
+  end
+  else // Source File not found
+    Writeln('Source File does not exist');
+  Write('Copy file is finished, press enter key to close..');
+  Readln;
+end.  }
+
+// Display the file content program
+var
+  FileName: string;
+  F: file;
+  Block: array [0 .. 1023] of byte;
+  i, NumRead: integer;
+begin
+  Write('Input source file name: ');
+  Readln(FileName);
+  if FileExists(FileName) then
+  begin
+    AssignFile(F, FileName);
+    FileMode := 0; // open for read only
+    Reset(F, 1);
+    while not EOF(F) do
+    begin
+      BlockRead(F, Block, SizeOf(Block), NumRead);
+      // display contents in screen
+      for i := 0 to NumRead - 1 do
+        Writeln(Block[i], ':', Chr(Block[i]));
+    end;
+    CloseFile(F);
+  end
+  else // File does not exist
+    Writeln('Source File does not exist');
+  Write('press enter key to close..');
+  Readln;
+end.
+
+
+
